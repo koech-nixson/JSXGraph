@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSXGraph template</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <!-- The jsxgraph version is defined in the next 2 lines (eg @1.4.5 defines version 1.4.5) -->
+    <link href="https://cdn.jsdelivr.net/npm/jsxgraph@1.4.5/distrib/jsxgraph.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/jsxgraph@1.4.5/distrib/jsxgraphcore.js" type="text/javascript"
+        charset="UTF-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+</head>
+
+<body>
+
+    <!-- You can define the width and height of your applet here -->
+    <!-- If it's not the standard 600 by 600 then the syntax for STACK is 
+        [[jsxgraph height='Apx' width='Bpx']] where A is the height and B
+        is the width -->
+    <div id="jxgbox" class="jxgbox" style="width:600px; height:600px;"></div>
+
+
+    <!-- Start your jsxgraph here -->
+    <script>
+        var board = JXG.JSXGraph.initBoard('jxgbox', { // STACK: when moving to STACK change 'jxgboard' for divid
+            boundingbox: [-3, 5, 5, -5],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: true,
+            showNavigation: true
+            
+        });
+
+        var p = board.create('point',[-1,1],{name:"A",visible:false});
+ var q = board.create('point',[-2,2],{name:"B",visible:false});
+
+ var circle1 = board.create("circle",[p,q],{strokeWidth:2});
+ var circle2 = board.create("circle",["B",1.5],{method:"pointRadius"});
+ var graph1 = board.create('functiongraph', [function(x){return Math.sin(x);}, -Math.PI, Math.PI],{name:'sin(x)', withLabel:true});
+ var graph2 = board.create('functiongraph', [function(x){return x*x-2;}, -3, 3],{name:'x^2 - 2', withLabel:true, strokeColor:'black'});
+ var x = [1,2,3,4,5,6,7,8,9,10];
+ var y = [8.4,1,0.1,9,3.3,3.3,4.5,8,9,4];
+ var curve = board.create('curve',[x,y],{curveType:'plot'});
+
+    </script>
+
+</body>
+
+</html>
